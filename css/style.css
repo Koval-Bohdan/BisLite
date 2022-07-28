@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: "Lato", sans-serif;
+}
+
 a {
     color: #000;
     text-decoration: none;
@@ -32,7 +36,6 @@ li {
 }
 
 .header__logo a {
-    font-family: "Lato", sans-serif;
     font-weight: 400;
     color: #2aacc8;
     font-size: 50px;
@@ -48,8 +51,12 @@ li {
     margin-right: 20px;
 }
 
-.header__menu-list .header__menu-item + .header__menu-item {
+.header__menu-item + .header__menu-item {
     margin-left: 50px;
+}
+
+.header__drop-down.drop-down + .header__item-blog {
+    margin-left: 20px;
 }
 
 .header__menu-link {
@@ -67,7 +74,12 @@ li {
 }
 
 .drop-down__list {
-    display: none;
+    /* Animations effect */
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 1s;
+
     position: absolute;
     width: 200px;
     background-color: #fff;
@@ -107,6 +119,14 @@ li {
     padding-left: 12px;
 }
 
+.header__drop-down.drop-down {
+    margin-left: 39px;
+}
+
+.header__drop-down.drop-down + .header__drop-down.drop-down {
+    margin-left: 12px;
+}
+
 .header__drop-down > a::after {
     content: "";
     transform: translateY(-50%);
@@ -125,21 +145,57 @@ li {
     background-color: #fff;
 } */
 
-.header__drop-down > a:hover + .drop-down__list {
-    display: block;
-}
-
-.drop-down__list:hover {
-    display: block;
-}
-
 .header__drop-down.header__drop-down:hover .drop-down__list {
-    display: block;
+    height: auto;
+    overflow: visible;
+    opacity: 1;
 }
 
 .header__drop-down.drop-down:hover > a {
+    transition: all 1s;
     color: #2aacc8;
     border-top: 5px solid #2aacc8;
     transition: all 0.5s;
+    background-color: #fff;
+}
+
+.slider {
+    background-color: #81e4ed;
+    padding: 20px 0 10px;
+}
+
+.slider__item {
+    background-image: url("../images/slider-bg.png");
+    min-height: 440px;
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.slider__item-title {
+    font-size: 50px;
+    color: #fff;
+    width: 300px;
+    font-weight: 700;
+    margin-left: 60px;
+    padding-top: 90px;
+}
+
+.slick-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slick-dots li button {
+    font-size: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: rgba(97, 97, 97, .5);
+    border: none;
+    margin: 0 9px;
+}
+
+.slick-dots .slick-active button {
     background-color: #fff;
 }
